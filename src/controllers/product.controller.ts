@@ -108,7 +108,7 @@ class productsController {
       for (let i = 0; i < json.length; i++) {
         const { title, img, type, brand, price, instock } = json[i] as IProduct;
         const id = uuidv4();
-        await Product.create({ id, title, img: "none", type: "none", brand: "none", oldprice: 1, price, instock });
+        await Product.create({ id, title, img, type: "none", brand: "none", oldprice: 1, price, instock });
       }
       console.log(json);
       res.sendStatus(200);
