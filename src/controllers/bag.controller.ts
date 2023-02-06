@@ -5,10 +5,8 @@ import { Basket, IBasket } from "../model";
 class BagController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      // console.log(req.body);
       const id = uuidv4();
       const anw = await Basket.findOne({ where: { value: req.body.value } });
-      // console.log(anw);
       if (anw) {
         return res.json({ success: true, id: anw.dataValues.id });
       }
@@ -21,12 +19,8 @@ class BagController {
 
   async getOne(req: Request, res: Response, next: NextFunction) {
     try {
-      // const bag = await Basket.findAll();
-      // console.log(req.params);
-      // console.log(req.params.id);
       const bag = await Basket.findOne({ where: { id: req.params.id } });
-      // console.log(bag);
-      if (!bag) return res.sendStatus(190);
+      if (!bag) return res.sendStatus(404);
       return res.json({ success: true, bag });
     } catch (e) {
       next(e);
