@@ -17,7 +17,7 @@ interface IFilterAttributes {
   tag: string;
 }
 
-interface IBasket {
+export interface IBasket {
   id: string;
   value: string;
 }
@@ -42,6 +42,8 @@ Basket.init(
   {
     sequelize: db,
     tableName: "bags",
+    createdAt: false,
+    updatedAt: false,
   },
 );
 

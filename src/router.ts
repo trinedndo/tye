@@ -13,7 +13,7 @@ router.post("/bag/create", bagController.create);
 router.post("/sign", authController.sign);
 router.post("/verif", authController.verif);
 
-router.post("/bath", productsController.bath);
+// router.post("/bath", productsController.bath);
 router.post("/create", productsController.create);
 router.post("/update", productsController.update);
 router.post("/delete", productsController.delete);

@@ -101,21 +101,23 @@ class productsController {
       next(e);
     }
   }
-  async bath(req: Request, res: Response, next: NextFunction) {
-    try {
-      const json = req.body;
+  // async bath(req: Request, res: Response, next: NextFunction) {
+  //   try {
+  //     const json = req.body;
 
-      for (let i = 0; i < json.length; i++) {
-        const { title, img, type, brand, price, instock } = json[i] as IProduct;
-        const id = uuidv4();
-        await Product.create({ id, title, img, type: "none", brand: "none", oldprice: 1, price, instock });
-      }
-      console.log(json);
-      res.sendStatus(200);
-    } catch (e) {
-      next(e);
-    }
-  }
+  //     for (let i = 0; i < json.length; i++) {
+  //       const { title, img, type, brand, price, instock } = json[i] as IProduct;
+  //       const id = uuidv4();
+  //       const brand2 = await brandController.CheckByTag(brand);
+  //       const type2 = await typeController.check(type);
+  //       await Product.create({ id, title, img, type: type2, brand: brand2, oldprice: 1, price, instock });
+  //     }
+  //     console.log(json);
+  //     res.sendStatus(200);
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 export default new productsController();
