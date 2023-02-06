@@ -10,8 +10,8 @@ class AuthController {
         res.cookie("httpToken", "EkVG34V42zv0hElV", {
           maxAge: 6 * 60 * 60 * 1000,
           httpOnly: true,
-          // sameSite: "none",
-          // secure: true,
+          sameSite: "none",
+          secure: true,
         });
         return res.json({ success: true, token: "rXlbhbyQREH6fJ2Y" });
       }
