@@ -5,7 +5,7 @@ import { Basket, IBasket } from "../model";
 class BagController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(req.body);
+      // console.log(req.body);
       const id = uuidv4();
       const anw = await Basket.findOne({ where: { value: req.body.value } });
       if (anw) {
