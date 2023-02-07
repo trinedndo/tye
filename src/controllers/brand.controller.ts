@@ -4,7 +4,9 @@ import { Brand } from "../model";
 
 class brandsController {
   async create(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401);
     try {
       let array = [];
       for (let i = 0; i < req.body.length; i++) {
@@ -20,7 +22,9 @@ class brandsController {
   }
 
   async update(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401);
     try {
       await Brand.update({ ...req.body }, { where: { id: req.body.id } });
       return res.json({ success: true });
@@ -30,7 +34,9 @@ class brandsController {
   }
 
   async delete(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401);
     try {
       await Brand.destroy({ where: { id: req.body.id } });
       return res.json({ success: true });

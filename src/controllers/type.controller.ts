@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 class typesController {
   async create(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y") return res.sendStatus(401);
+    // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
     try {
       let array = [];
       for (let i = 0; i < req.body.length; i++) {
@@ -20,7 +21,9 @@ class typesController {
   }
 
   async update(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401);
     try {
       await Type.update({ ...req.body }, { where: { id: req.body.id } });
       return res.json({ success: true });
@@ -30,7 +33,9 @@ class typesController {
   }
 
   async delete(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401);
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401);
     try {
       await Type.destroy({ where: { id: req.body.id } });
       return res.json({ success: true });
@@ -52,6 +57,7 @@ class typesController {
 
   async getAll(req: Request, res: Response, next: NextFunction) {
     try {
+      console.log(req.socket.remoteAddress);
       return res.json(await Type.findAll());
     } catch (e) {
       next(e);

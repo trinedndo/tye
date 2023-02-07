@@ -22,9 +22,11 @@ class AuthController {
   }
 
   async verif(req: Request, res: Response, next: NextFunction) {
-    if (req.cookies.httpToken !== "EkVG34V42zv0hElV") return res.sendStatus(401).json({ success: false });
+    if (req.body.token !== "rXlbhbyQREH6fJ2Y")
+      // if (req.cookies.httpToken !== "EkVG34V42zv0hElV")
+      return res.sendStatus(401).json({ success: false });
     try {
-      if (req.cookies.httpToken === "EkVG34V42zv0hElV") {
+      if (req.cookies.httpToken === "EkVG34V42zv0hElV" || req.body.token === "rXlbhbyQREH6fJ2Y") {
         res.cookie("httpToken", "EkVG34V42zv0hElV", {
           maxAge: 6 * 60 * 60 * 1000,
           httpOnly: true,
